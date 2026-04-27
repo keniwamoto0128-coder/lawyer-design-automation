@@ -1,0 +1,544 @@
+/* =========================
+  01. CSS VARIABLES
+========================= */
+:root {
+  --lp-green-dark: #2f5f45;
+  --lp-green-main: #5f8f6b;
+  --lp-green-soft: #dfeee4;
+  --lp-green-pale: #f3faf5;
+  --lp-gold: #c8a96a;
+  --lp-gold-soft: #f3ead4;
+  --lp-ivory: #fffdf7;
+  --lp-white: #ffffff;
+  --lp-text: #2f3a33;
+  --lp-text-soft: #657066;
+  --lp-border: #d8e5dc;
+  --lp-shadow: 0 10px 30px rgba(47, 95, 69, 0.12);
+  --lp-radius-lg: 24px;
+  --lp-radius-md: 16px;
+  --lp-radius-sm: 10px;
+  --lp-max-width: 1120px;
+  --lp-sticky-cta-height: 72px;
+
+  /* 社長修正ポイント：全体調整用 */
+  --lp-section-padding: clamp(48px, 7vw, 88px);
+  --lp-title-size: clamp(1.8rem, 4vw, 2.8rem);
+  --lp-subtitle-size: clamp(1.3rem, 2.8vw, 1.8rem);
+  --lp-body-size: 1rem;
+  --lp-btn-radius: 999px;
+  --lp-btn-primary-bg: var(--lp-green-main);
+  --lp-btn-primary-text: #ffffff;
+  --lp-btn-secondary-bg: var(--lp-white);
+  --lp-btn-secondary-text: var(--lp-green-dark);
+}
+
+/* =========================
+  02. BASE
+========================= */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  color: var(--lp-text);
+  background: linear-gradient(180deg, var(--lp-ivory), var(--lp-white));
+  font-family: "Noto Sans JP", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: var(--lp-body-size);
+  line-height: 1.75;
+  overflow-x: hidden;
+  padding-bottom: calc(var(--lp-sticky-cta-height) + env(safe-area-inset-bottom));
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.lp-main {
+  width: min(100% - 32px, var(--lp-max-width));
+  margin-inline: auto;
+}
+
+.lp-section {
+  padding: var(--lp-section-padding) 0;
+}
+
+.lp-section + .lp-section {
+  border-top: 1px solid rgba(216, 229, 220, 0.45);
+}
+
+.lp-section-title {
+  margin: 0 0 14px;
+  font-family: "Noto Serif JP", "Yu Mincho", "Hiragino Mincho ProN", serif;
+  font-size: var(--lp-subtitle-size);
+  line-height: 1.4;
+  letter-spacing: 0.02em;
+  color: var(--lp-green-dark);
+}
+
+.lp-section-lead {
+  margin: 0;
+  color: var(--lp-text-soft);
+}
+
+.lp-grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(20px, 3vw, 36px);
+}
+
+.lp-grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.lp-card {
+  background: var(--lp-white);
+  border: 1px solid var(--lp-border);
+  border-radius: var(--lp-radius-md);
+  box-shadow: var(--lp-shadow);
+  padding: clamp(18px, 2.2vw, 26px);
+}
+
+.lp-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 10px;
+}
+
+.lp-list li {
+  position: relative;
+  padding-left: 1.8em;
+}
+
+.lp-list li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  top: 0.08em;
+  color: var(--lp-green-main);
+  font-weight: 700;
+}
+
+.lp-btn {
+  min-height: 48px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  border-radius: var(--lp-btn-radius);
+  border: 1px solid transparent;
+  padding: 12px 26px;
+  font-weight: 700;
+  font-size: 0.98rem;
+  letter-spacing: 0.02em;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.lp-btn:hover,
+.lp-btn:focus-visible {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 20px rgba(47, 95, 69, 0.18);
+}
+
+.lp-btn:focus-visible {
+  outline: 2px solid color-mix(in srgb, var(--lp-green-main) 70%, #ffffff 30%);
+  outline-offset: 2px;
+}
+
+.lp-btn-primary {
+  background: var(--lp-btn-primary-bg);
+  color: var(--lp-btn-primary-text);
+}
+
+.lp-btn-secondary {
+  background: var(--lp-btn-secondary-bg);
+  color: var(--lp-btn-secondary-text);
+  border-color: var(--lp-border);
+}
+
+.lp-btn-line {
+  background: #eef8f1;
+  color: var(--lp-green-dark);
+  border: 1px solid #cde3d3;
+}
+
+.lp-badge-grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.lp-badge-grid li {
+  border-radius: var(--lp-radius-sm);
+  background: var(--lp-green-pale);
+  border: 1px solid #d4e8da;
+  padding: 10px 12px;
+  font-size: 0.9rem;
+}
+
+.lp-image-frame {
+  border-radius: var(--lp-radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--lp-border);
+  box-shadow: var(--lp-shadow);
+  background: #edf5ef;
+}
+
+.lp-image-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.lp-cta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.lp-note {
+  font-size: 0.9rem;
+  color: var(--lp-text-soft);
+}
+
+/* =========================
+  03. HEADER
+========================= */
+.lp-header-wrap {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  border-bottom: 1px solid rgba(216, 229, 220, 0.8);
+  background: rgba(255, 253, 247, 0.95);
+  backdrop-filter: blur(8px);
+}
+
+.lp-header {
+  width: min(100% - 32px, var(--lp-max-width));
+  margin-inline: auto;
+  padding: 12px 0;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 12px;
+  align-items: center;
+}
+
+.lp-header-title {
+  margin: 0;
+  font-size: 1.05rem;
+  color: var(--lp-green-dark);
+}
+
+.lp-header-sub {
+  font-size: 0.84rem;
+  color: var(--lp-text-soft);
+}
+
+.lp-header-cta {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.lp-header-cta .lp-btn {
+  min-height: 44px;
+  padding: 10px 16px;
+  font-size: 0.9rem;
+}
+
+/* =========================
+  04. HERO
+========================= */
+.lp-hero {
+  padding-top: clamp(34px, 6vw, 72px);
+}
+
+.lp-hero-title {
+  margin: 0;
+  font-family: "Noto Serif JP", "Yu Mincho", "Hiragino Mincho ProN", serif;
+  color: var(--lp-green-dark);
+  line-height: 1.35;
+  letter-spacing: 0.02em;
+  font-size: var(--lp-title-size);
+}
+
+.lp-hero-copy {
+  font-size: 1.02rem;
+  color: var(--lp-text-soft);
+  margin: 16px 0 0;
+}
+
+.lp-hero-small {
+  margin-top: 14px;
+  font-size: 0.92rem;
+}
+
+.lp-kv-img {
+  aspect-ratio: 4 / 5;
+}
+
+/* =========================
+  05. SECTION VARIANTS
+========================= */
+.lp-soft {
+  background: var(--lp-green-pale);
+}
+
+.lp-gold-soft {
+  background: linear-gradient(135deg, #fefcf4, var(--lp-gold-soft));
+}
+
+.lp-pill {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid #d7e6db;
+  border-radius: 999px;
+  padding: 7px 12px;
+  font-size: 0.84rem;
+  background: #f5fbf7;
+}
+
+.lp-phone {
+  font-size: 1.28rem;
+  font-weight: 700;
+  color: var(--lp-green-dark);
+}
+
+.lp-steps {
+  counter-reset: steps;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.lp-steps li {
+  background: var(--lp-white);
+  border: 1px solid var(--lp-border);
+  border-radius: 14px;
+  padding: 14px 10px;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+.lp-steps li strong {
+  display: block;
+  color: var(--lp-green-main);
+  font-size: 0.78rem;
+}
+
+.lp-faq details {
+  border: 1px solid var(--lp-border);
+  border-radius: 12px;
+  background: #fff;
+  padding: 14px 16px;
+}
+
+.lp-faq details + details {
+  margin-top: 10px;
+}
+
+.lp-faq summary {
+  cursor: pointer;
+  font-weight: 700;
+  color: var(--lp-green-dark);
+}
+
+.lp-faq p {
+  margin: 10px 0 0;
+  color: var(--lp-text-soft);
+}
+
+.lp-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  border-radius: var(--lp-radius-md);
+  overflow: hidden;
+  border: 1px solid var(--lp-border);
+}
+
+.lp-table th,
+.lp-table td {
+  padding: 14px;
+  border-bottom: 1px solid var(--lp-border);
+  text-align: left;
+}
+
+.lp-table th {
+  width: 32%;
+  background: #f6fbf7;
+  color: var(--lp-green-dark);
+}
+
+.lp-table tr:last-child th,
+.lp-table tr:last-child td {
+  border-bottom: 0;
+}
+
+/* =========================
+  06. CONTACT
+========================= */
+.lp-contact-form {
+  margin-top: 16px;
+}
+
+.lp-form {
+  display: grid;
+  gap: 12px;
+}
+
+.lp-form label {
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--lp-green-dark);
+}
+
+.lp-form input,
+.lp-form select,
+.lp-form textarea {
+  width: 100%;
+  min-height: 48px;
+  border: 1px solid var(--lp-border);
+  border-radius: 10px;
+  padding: 10px 12px;
+  font: inherit;
+  background: #fff;
+}
+
+.lp-form textarea {
+  min-height: 140px;
+  resize: vertical;
+}
+
+.lp-form-check {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.lp-form-check input {
+  width: 18px;
+  min-height: 18px;
+  margin-top: 3px;
+}
+
+/* =========================
+  07. FOOTER & STICKY CTA
+========================= */
+.lp-footer {
+  border-top: 1px solid var(--lp-border);
+  padding: 32px 0 calc(40px + env(safe-area-inset-bottom));
+  text-align: center;
+  font-size: 0.88rem;
+  color: var(--lp-text-soft);
+}
+
+.lp-sticky-cta {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 45;
+  background: rgba(243, 250, 245, 0.98);
+  border-top: 1px solid #cfe2d4;
+  padding-bottom: env(safe-area-inset-bottom);
+  display: none;
+}
+
+.lp-sticky-cta-inner {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 6px;
+  width: min(100% - 16px, 760px);
+  margin: 0 auto;
+  padding: 8px 0;
+}
+
+.lp-sticky-cta a {
+  min-height: var(--lp-sticky-cta-height);
+  border-radius: 12px;
+  font-size: 0.88rem;
+  padding: 8px;
+  text-align: center;
+  display: grid;
+  place-content: center;
+  font-weight: 700;
+}
+
+/* =========================
+  08. RESPONSIVE
+========================= */
+@media (max-width: 1023px) {
+  .lp-grid-3 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .lp-steps {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 767px) {
+  .lp-header {
+    grid-template-columns: 1fr;
+  }
+
+  .lp-header-cta {
+    justify-content: flex-start;
+  }
+
+  .lp-grid-2,
+  .lp-grid-3,
+  .lp-steps {
+    grid-template-columns: 1fr;
+  }
+
+  .lp-main {
+    width: min(100% - 24px, var(--lp-max-width));
+  }
+
+  .lp-hero-copy {
+    font-size: 0.96rem;
+  }
+
+  .lp-phone {
+    font-size: 1.15rem;
+  }
+
+  .lp-table th,
+  .lp-table td {
+    display: block;
+    width: 100%;
+  }
+
+  .lp-table th {
+    border-bottom: 0;
+  }
+
+  .lp-sticky-cta {
+    display: block;
+  }
+}
