@@ -1,0 +1,552 @@
+/* =========================
+  01. ROOT VARIABLES
+  修正ポイント：カラー・余白・CTA・角丸
+========================= */
+:root {
+  --auth-green-dark: #2F5F3D;
+  --auth-green-main: #4F7F3A;
+  --auth-green-soft: #DDE9D5;
+  --auth-green-pale: #F4F8EF;
+
+  --auth-gold: #B9975B;
+  --auth-gold-soft: #EADDBE;
+
+  --auth-ivory: #FFFDF5;
+  --auth-white: #FFFFFF;
+
+  --auth-text: #2D2D2A;
+  --auth-text-soft: #68655E;
+
+  --auth-border: #D8CBA8;
+  --auth-border-soft: #E7E0CD;
+
+  --auth-shadow: 0 12px 32px rgba(47, 95, 61, 0.14);
+
+  --auth-radius-lg: 24px;
+  --auth-radius-md: 16px;
+  --auth-radius-sm: 10px;
+
+  --auth-max-width: 1120px;
+  --auth-sticky-cta-height: 72px;
+
+  --auth-section-padding: clamp(48px, 7vw, 88px);
+  --auth-title-size: clamp(1.7rem, 4.3vw, 3.1rem);
+  --auth-subtitle-size: clamp(1.35rem, 2.8vw, 2rem);
+  --auth-body-size: 1rem;
+  --auth-btn-radius: 10px;
+}
+
+/* =========================
+  02. BASE
+========================= */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  overflow-x: hidden;
+}
+
+.auth-lp,
+.auth-lp * {
+  box-sizing: border-box;
+}
+
+.auth-lp {
+  color: var(--auth-text);
+  background: linear-gradient(180deg, var(--auth-ivory), var(--auth-white));
+  font-family: "Noto Sans JP", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: max(14px, var(--auth-body-size));
+  line-height: 1.75;
+  overflow-x: hidden;
+  position: relative;
+  padding-bottom: calc(var(--auth-sticky-cta-height) + env(safe-area-inset-bottom));
+}
+
+.auth-lp img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.auth-lp a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.auth-lp-main,
+.auth-lp-header-inner {
+  width: min(100% - 32px, var(--auth-max-width));
+  margin-inline: auto;
+}
+
+.auth-lp-section {
+  padding: var(--auth-section-padding) 0;
+}
+
+.auth-lp-section + .auth-lp-section {
+  border-top: 1px solid rgba(216, 203, 168, 0.42);
+}
+
+.auth-section-title {
+  margin: 0 0 14px;
+  color: var(--auth-green-dark);
+  font-size: var(--auth-subtitle-size);
+  line-height: 1.45;
+  font-family: "Noto Serif JP", "Yu Mincho", "Hiragino Mincho ProN", serif;
+  letter-spacing: 0.02em;
+}
+
+.auth-section-lead {
+  margin: 0;
+  color: var(--auth-text-soft);
+}
+
+.auth-grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(20px, 3.2vw, 38px);
+}
+
+.auth-grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.auth-card {
+  background: var(--auth-white);
+  border: 1px solid var(--auth-border-soft);
+  box-shadow: var(--auth-shadow);
+  border-radius: var(--auth-radius-md);
+  padding: clamp(18px, 2.4vw, 28px);
+}
+
+.auth-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 10px;
+}
+
+.auth-list li {
+  position: relative;
+  padding-left: 1.8em;
+}
+
+.auth-list li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  top: 0.05em;
+  color: var(--auth-green-main);
+  font-weight: 700;
+}
+
+.auth-btn {
+  min-height: 48px;
+  border-radius: var(--auth-btn-radius);
+  border: 1px solid transparent;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  padding: 12px 22px;
+  gap: 6px;
+  font-weight: 700;
+  font-size: 0.97rem;
+  transition: 0.2s ease;
+}
+
+.auth-btn:hover,
+.auth-btn:focus-visible {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 20px rgba(47, 95, 61, 0.18);
+}
+
+.auth-btn:focus-visible {
+  outline: 2px solid color-mix(in srgb, var(--auth-green-main) 70%, #fff 30%);
+  outline-offset: 2px;
+}
+
+.auth-btn-primary {
+  background: var(--auth-green-main);
+  color: #fff;
+}
+
+.auth-btn-secondary {
+  background: #fff;
+  border-color: var(--auth-border);
+  color: var(--auth-green-dark);
+}
+
+.auth-btn-sub {
+  background: #f7fbf4;
+  border-color: #dbe7d2;
+  color: var(--auth-green-dark);
+}
+
+.auth-cta-row {
+  margin-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.auth-soft {
+  background: var(--auth-green-pale);
+}
+
+.auth-gold-soft {
+  background: linear-gradient(135deg, #fefcf6, var(--auth-gold-soft));
+}
+
+.auth-image {
+  border-radius: var(--auth-radius-lg);
+  border: 1px solid var(--auth-border-soft);
+  overflow: hidden;
+  box-shadow: var(--auth-shadow);
+  background: linear-gradient(135deg, #eef4e8, #fdfaf2);
+}
+
+.auth-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.auth-note {
+  color: var(--auth-text-soft);
+  font-size: 0.9rem;
+}
+
+.auth-pill-grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.auth-pill-grid li {
+  border: 1px solid #d9dfca;
+  border-radius: var(--auth-radius-sm);
+  padding: 9px 10px;
+  background: #f8fbf3;
+  font-size: 0.88rem;
+}
+
+/* =========================
+  03. HEADER
+========================= */
+.auth-header-wrap {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  background: rgba(255, 253, 245, 0.95);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(216, 203, 168, 0.7);
+}
+
+.auth-lp-header-inner {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 14px;
+  align-items: center;
+  padding: 12px 0;
+}
+
+.auth-header-title {
+  margin: 0;
+  color: var(--auth-green-dark);
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.auth-header-sub,
+.auth-header-mini {
+  margin: 2px 0 0;
+  font-size: 0.82rem;
+  color: var(--auth-text-soft);
+}
+
+.auth-header-cta {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.auth-header-cta .auth-btn {
+  min-height: 44px;
+  padding: 10px 15px;
+  font-size: 0.88rem;
+}
+
+/* =========================
+  04. HERO
+========================= */
+.auth-hero {
+  padding-top: clamp(34px, 6vw, 74px);
+}
+
+.auth-kicker {
+  margin: 0 0 12px;
+  font-size: 0.94rem;
+  color: var(--auth-text-soft);
+}
+
+.auth-hero-title {
+  margin: 0;
+  font-size: var(--auth-title-size);
+  line-height: 1.25;
+  font-family: "Noto Serif JP", "Yu Mincho", "Hiragino Mincho ProN", serif;
+  color: var(--auth-green-dark);
+}
+
+.auth-hero-title .accent {
+  color: var(--auth-green-main);
+}
+
+.auth-hero-lead {
+  margin: 16px 0 0;
+  color: var(--auth-text-soft);
+}
+
+.auth-divider {
+  width: 72px;
+  height: 3px;
+  border-radius: 99px;
+  background: linear-gradient(90deg, var(--auth-gold), #d7c090);
+  margin: 14px 0;
+}
+
+.auth-hero-img {
+  aspect-ratio: 3/4;
+  min-height: 360px;
+}
+
+.auth-hero-phone {
+  display: block;
+  margin-top: 12px;
+  font-size: 1.24rem;
+  font-weight: 700;
+  color: var(--auth-green-dark);
+}
+
+/* =========================
+  05. TABLE / FLOW / FAQ
+========================= */
+.auth-table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid var(--auth-border-soft);
+  border-radius: var(--auth-radius-md);
+  overflow: hidden;
+  background: #fff;
+}
+
+.auth-table th,
+.auth-table td {
+  border-bottom: 1px solid var(--auth-border-soft);
+  padding: 14px;
+  text-align: left;
+}
+
+.auth-table th {
+  width: 30%;
+  background: #f8f4e9;
+  color: var(--auth-green-dark);
+}
+
+.auth-flow {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.auth-flow li {
+  border: 1px solid var(--auth-border-soft);
+  background: #fff;
+  border-radius: 12px;
+  text-align: center;
+  padding: 14px 10px;
+  font-size: 0.9rem;
+}
+
+.auth-flow strong {
+  display: block;
+  font-size: 0.78rem;
+  color: var(--auth-green-main);
+}
+
+.auth-faq details {
+  border: 1px solid var(--auth-border-soft);
+  border-radius: 12px;
+  background: #fff;
+  padding: 14px 16px;
+}
+
+.auth-faq details + details {
+  margin-top: 10px;
+}
+
+.auth-faq summary {
+  font-weight: 700;
+  color: var(--auth-green-dark);
+  cursor: pointer;
+}
+
+.auth-faq p {
+  margin: 10px 0 0;
+  color: var(--auth-text-soft);
+}
+
+/* =========================
+  06. CONTACT
+========================= */
+.auth-contact-form {
+  margin-top: 18px;
+}
+
+.auth-form {
+  display: grid;
+  gap: 12px;
+}
+
+.auth-form label {
+  font-weight: 600;
+  color: var(--auth-green-dark);
+  font-size: 0.92rem;
+}
+
+.auth-form input,
+.auth-form select,
+.auth-form textarea {
+  width: 100%;
+  border: 1px solid var(--auth-border-soft);
+  border-radius: 10px;
+  min-height: 48px;
+  padding: 10px 12px;
+  font: inherit;
+  background: #fff;
+}
+
+.auth-form textarea {
+  min-height: 140px;
+  resize: vertical;
+}
+
+.auth-check {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.auth-check input {
+  width: 18px;
+  min-height: 18px;
+  margin-top: 4px;
+}
+
+/* =========================
+  07. FOOTER & STICKY CTA
+========================= */
+.auth-footer {
+  padding: 34px 0 calc(44px + env(safe-area-inset-bottom));
+  text-align: center;
+  color: var(--auth-text-soft);
+  font-size: 0.88rem;
+}
+
+.auth-sticky-cta {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 50;
+  padding-bottom: env(safe-area-inset-bottom);
+  background: rgba(244, 248, 239, 0.98);
+  border-top: 1px solid #d9dfcb;
+  display: none;
+}
+
+.auth-sticky-cta-inner {
+  width: min(100% - 16px, 760px);
+  margin-inline: auto;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 6px;
+  padding: 8px 0;
+}
+
+.auth-sticky-cta a {
+  min-height: var(--auth-sticky-cta-height);
+  border-radius: 10px;
+  font-size: 0.86rem;
+  display: grid;
+  place-content: center;
+  text-align: center;
+  font-weight: 700;
+}
+
+/* =========================
+  08. RESPONSIVE
+========================= */
+@media (max-width: 1023px) {
+  .auth-grid-3 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .auth-flow {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 767px) {
+  .auth-lp-header-inner {
+    grid-template-columns: 1fr;
+  }
+
+  .auth-header-cta {
+    display: none;
+  }
+
+  .auth-lp-main,
+  .auth-lp-header-inner {
+    width: min(100% - 24px, var(--auth-max-width));
+  }
+
+  .auth-grid-2,
+  .auth-grid-3,
+  .auth-flow {
+    grid-template-columns: 1fr;
+  }
+
+  .auth-section-title {
+    font-size: clamp(1.62rem, 6.4vw, 2.12rem);
+  }
+
+  .auth-hero-img {
+    min-height: 300px;
+  }
+
+  .auth-table th,
+  .auth-table td {
+    display: block;
+    width: 100%;
+  }
+
+  .auth-table th {
+    border-bottom: 0;
+  }
+
+  .auth-sticky-cta {
+    display: block;
+  }
+}
